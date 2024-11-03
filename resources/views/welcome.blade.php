@@ -109,7 +109,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="text-bg">
-                      <span>The Best</span>
+                      <span>BLASS</span>
                       <h1>MPRUEBA MISTER MAYTA</h1>
                       <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
                       <a href="#">Music & Entertainment</a> <a href="#">Buy Tickets </a>
@@ -127,7 +127,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="text-bg">
-                        <span>The Best</span>
+                        <span>JOHN</span>
                       <h1>PRUEBA JOHN</h1>
                       <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
                       <a href="#">Music & Entertainment</a><a href="#">Buy Tickets </a>
@@ -148,7 +148,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="text-bg">
-                        <span>The Best</span>
+                        <span>NESTOR</span>
                       <h1>PRUEBA NESTOR</h1>
                       <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
                       <a href="#">Music & Entertainment</a> <a href="#">Buy Tickets </a>
