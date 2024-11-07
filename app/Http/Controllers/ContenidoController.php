@@ -25,6 +25,12 @@ class ContenidoController extends Controller
         return view('contenidoinicio.iniciomusica');
     }
 
+
+    public function sonoro()
+    {
+        return view('contenidoinicio.iniciosonoro');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -15,6 +15,7 @@ use App\Http\Controllers\TeoriaController;
 use App\Http\Controllers\TextoController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\FormularioController;
+use App\Http\Controllers\controllersGame\GameInicialController;
 // use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\ContenidoController;
@@ -69,7 +70,7 @@ Route::resource('checks', CheckController:: class)->names('check');
 Route::resource('textos', TextoController:: class)->names('texto');
 
 */
-
+ // FORMULARIO DE TEST EMPLEANDO LOGICA DIFUSA
 Route::get('/formulario', [FormularioController::class, 'index']);
 Route::post('/formulario', [FormularioController::class, 'store']);
 
@@ -77,7 +78,7 @@ Route::post('/formulario', [FormularioController::class, 'store']);
 Route::resource('forms', FormController::class)->names('forms');
 Route::post('/forms/{form}/responses', [FormController::class, 'storeResponse'])->name('forms.responses.store');
 Route::get('/thankyou', [FormController::class, 'thankYou'])->name('forms.thankyou');
-
+//--------------------------------------------------------------------------
 /*
 Route::get('/', [FormController::class, 'index'])->name('forms.index');
 Route::get('/forms/create', [FormController::class, 'create'])->name('forms.create');
@@ -86,7 +87,7 @@ Route::get('/forms/{form}', [FormController::class, 'show'])->name('forms.show')
 Route::post('/forms/{form}/responses', [FormController::class, 'storeResponse'])->name('forms.responses.store');
 Route::get('/thankyou', [FormController::class, 'thankYou'])->name('forms.thankyou');
 */
-
+// CONTENIDOS RUTA
 
 //Route::get('/himno', [App\Http\Controllers\controllersHimno\HimnoNacionalController::class, 'index']);
 Route::get('/himno',[App\Http\Controllers\controllersHimno\InicioController::class, 'index']);
@@ -103,12 +104,27 @@ Route::get('/himdepartamento/beni', [App\Http\Controllers\controllersHimno\Himno
 
 // Route::get('/', [GameController::class, 'index']);
 
-Route::get('/juego',[App\Http\Controllers\controllersGame\GameInicialController::class,'index'])->name('juego.gameuno');
+
 Route:: get('/contenidoinicio',[ContenidoController:: class, 'index'])->name('contenidoinicio.index');
 
 Route:: get('/iniciomusica',[ContenidoController:: class, 'iniciomusica'])->name('contenidoinicio.iniciomusica');
 
+Route::get('/iniciosonoro',[ContenidoController:: class, 'sonoro'])->name('contenidoinicio.iniciosonoro');
+
+
+//----------------------------------------------------------------
+
+//JUEGOS 
+Route::get('/juego',[GameInicialController:: class, 'index'])->name('juego.index');
+
+Route::get('/gameuno',[GameInicialController::class,'gameuno'])->name('juego.gameuno');
+
+Route::get('/juegomental', [GameInicialController:: class, 'mental'])->name('juego.juegomental');
+
+
+//--------------------------------------------------------
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'
+
 ])->group(function () {
     Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
 

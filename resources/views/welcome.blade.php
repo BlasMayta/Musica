@@ -64,7 +64,7 @@
                   
                       <li> <a href="{{url('himno')}}">himno</a> </li>
                       <li> <a href="{{url('contenidoinicio')}}">Contenido </a> </li>
-                      <li> <a href="gallery.html">juegos</a> </li>
+                      <li> <a href="{{url('juego')}}">juegos</a> </li>
                       <li> <a href="contact.html">Instrumento</a></li>
                       
 
