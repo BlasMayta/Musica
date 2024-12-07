@@ -245,7 +245,9 @@
               <h3 class="flip-box-header">NOCIONES DE LA MUSICA</h3>
               <p>La Metodologia musical se debe </p>
               <p>encotrar factible y practico para los niños</p>
-                <button class="flip-box-button">ingrese para ver</button>
+                <!-- <button class="flip-box-button" >ingrese para ver</button> -->
+                <a class="btn btn-primary" class="flip-box-button" href="{{url('/juegomenta1')}}">ingrese para ver</a> 
+              
               
           </div>
 
@@ -273,7 +275,7 @@
               <h3 class="flip-box-header">JUEGOS</h3>
               <p>La Metodologia musical se debe </p>
               <p>encotrar factible y practico para los niños</p>
-                <button class="flip-box-button">ingrese para ver</button>
+              <a class="btn btn-primary" class="flip-box-button" href="{{url('/juegocompa')}}">ingrese para ver</a> 
               
           </div>
 

@@ -16,6 +16,7 @@ use App\Http\Controllers\TextoController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\FormularioController;
 use App\Http\Controllers\controllersGame\GameInicialController;
+use App\Http\Controllers\ChatgptController;
 // use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\ContenidoController;
@@ -121,8 +122,18 @@ Route::get('/gameuno',[GameInicialController::class,'gameuno'])->name('juego.gam
 
 Route::get('/juegomental', [GameInicialController:: class, 'mental'])->name('juego.juegomental');
 
+Route::get('/juegomenta1',[GameInicialController:: class, 'mental1'])->name('juego.juegomenta1');
+
+Route::get('/juegocompa',[GameInicialController:: class, 'comparar'])->name('juego.juegocompa');
+
+
 
 //--------------------------------------------------------
+
+// CHATGPT
+Route::get('/chatgpt',[ChatgptController:: class, 'index'])->name('chatgpt.index');
+
+//-------------------------------------------------------------
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'
 
 ])->group(function () {
