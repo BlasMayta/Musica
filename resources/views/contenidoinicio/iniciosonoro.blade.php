@@ -32,104 +32,6 @@
 
 <style>
 
-/* .body{
-  width: 100%;
-  height: 100%;
-  display:flex;
-  justify-content:center;
-  background: #222;
-} */
-
-.flip-box{
-   
-    /* perspective: 1000px; */
-     cursor: pointer;
-    margin-top:50px; */
-}
-.wrapper{
-    display: flex;
-    width: 90%;
-    justify-content: space-around;
-}
-.card{
-    width: 280px;
-    height: 360px;
-    padding: 2rem 1rem;
-    background: #fff;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-     box-shadow: 0px 7px 10px rgb(0, 0, 0,1); 
-    transition: 0.5s ease-in-out;
-
-}
-.card:hover{
-    transform: translateY(20px);
-
-}
-.card::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0,176,155,0.5),rgba(150,201,61,1));
-    z-index: 2;
-    transition: 0.5s all;
-    opacity: 0;
-
-}
-.card:hover:before{
-    opacity: 1;
-}
-.card .flip{
-    width: 100%;
-    height: 100%;
-    object-fit: cover ;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.card .info{
-    position: relative;
-    z-index: 9;
-    color: #fff;
-    opacity:1 ;
-    transform: translateY(90px);
-    transition: 0.5s all;
-}
-.card:hover .info{
-    opacity: 1;
-    transform: translateY(0px);
-}
-.card .info h1{
-   margin: 0;
-   color: #fff;
-
-}
-.card .info p{
-    letter-spacing: 1px;
-    font-size: 15px;
-    margin-top: 8px;
-    margin-bottom: 20px;
- 
- }
- .card .info .btn{
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    /* background: #fff;
-    color: #000; */
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.4s ease-in-out;
-
- }
-
-
-
 </style>
 
 
@@ -207,66 +109,30 @@
     <div class="row">
       <div class="col-md-12">
         <div class="heding">
-           <h2>INICIO DE LA MUSICA</h2>
+           <h2>INICIO  DE LA MUSICA SONORO</h2>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="wrapper">
-      
-        <div class="card col-md-4">
-          <div class="flip-box">
-            <div class="flip text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
-              <img src="" alt="">
-              <div class="info">
-                  <h1>SONORO</h1>
-                <p>este contenido es para niños</p>
-                <a class="btn btn-primary" class="flip-box-button" href="{{url('/iniciosonoro')}}">ingrese para ver</a> 
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card col-md-4">
-          <div class="flip-box">
-            <div class="flip text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
-              <img src="" alt="">
-                <div class="info">
-                  <h1>SONORO</h1>
-                <p>este contenido es para niños</p>
-                <a href="" class="btn btn-primary">ingese par ver </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card col-md-4">
-          <div class="flip-box">
-            <div class="flip text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
-              <img src="" alt="">
-              <div class="info">
-                  <h1>SONORO</h1>
-                <p>este contenido es para niños</p>
-                <a href="" class="btn btn-primary">ingese par ver </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-    </div>
-  </div>
-</div>
 
 
 
 
 
 
-<!-- end Gallery --> 
+
+
+
+
+
+
+
+
+
+
+
 
 
 

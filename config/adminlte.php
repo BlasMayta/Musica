@@ -293,37 +293,16 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'text'    => 'CONTENIDO',
+            'text'    => 'CHATGPT',
           
             'topnav'=> true,
             'submenu' => [
                 [
-                    'text' => 'Materia',
-                    'url'  => 'materias',
+                    'text' => 'CHATGPT',
+                    'url'  => 'chatgpt',
                     'icon' => 'fas fa-fw fa-city',
                 ],
-                [
-                    'text' => 'Tema',
-                    'url'  => 'temas',
-                    'icon' => 'fas fa-fw fa-city',
-                ],
-                [
-                    'text' => 'Teoria',
-                    'url'  => 'teorias',
-                    'icon' => 'fas fa-fw fa-city',
-                ],
-                [
-                    'text' => 'Estrofa',
-                    'url'  => 'estrofas',
-                    'icon' => 'fas fa-fw fa-city',
-                ],
-                [
-                    'text' => 'Canciones',
-                    'url'  => 'cancions',
-                    'icon' => 'fas fa-user-check',
-                ],
-                
-                
+         
             ],
         ],
 
