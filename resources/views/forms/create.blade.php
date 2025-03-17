@@ -1,314 +1,314 @@
 @extends('adminlte::page')
-@section('css')
 
+@section('title', 'Crear Formulario')
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
-
-    <style>
-        .question-container {
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            position: relative;
-        }
-        .option-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-        .option-container input[type="text"] {
-            margin-right: 10px;
-            width: 100%;
-        }
-        .delete-question-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .modal-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-        .points-input {
-            width: 60px;
-            text-align: right;
-        }
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            width: 100%;
-        }
-        .checkbox-container input[type="checkbox"] {
-            margin-right: 10px;
-        }
-        .checkmark {
-            margin-left: auto;
-            color: green;
-            display: none;
-        }
-        .checkbox-container input[type="checkbox"]:checked ~ .checkmark {
-            display: block;
-        }
-    </style>
-@endsection
-
-@section('title', 'formulario')
 @section('content_header')
-<div class="card card-header">
+    <div class="card card-header">
         <div class="card bg-dark">
-            <table width=100%>
+            <table width="100%">
                 <tr>
-                    <td align="left" width=5%>
+                    <td align="left" width="5%">
                         <h2><i class="fas fa-clipboard-list"></i></h2>
                     </td>
                     <td align="center">
-                        <h2> FORMULARIO </h2>
+                        <h2>CREAR FORMULARIO</h2>
                     </td>
                 </tr>
             </table>
         </div>
+    </div>
+@stop
 
-
-<body>
-    <h1>Crear Formulario</h1>
+@section('content')
     <form action="{{ route('forms.store') }}" method="POST">
         @csrf
-        <label for="title">Título:</label>
-        <input type="text" name="title" id="title" required>
-        
-        <label for="description">Descripción:</label>
-        <textarea name="description" id="description"></textarea>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <!-- Columna izquierda: Título y Descripción -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="title">Título:</label>
+                            <input type="text" name="title" id="title" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Descripción:</label>
+                            <textarea name="description" id="description" class="form-control" rows="4"></textarea>
+                        </div>
+                    </div>
 
-        <div id="questions">
-            <h2>Preguntas</h2>
-            <button type="button" class="btn btn-primary" onclick="addQuestion()">Agregar Pregunta</button>
+                    <!-- Columna derecha: Fecha, Hora y Duración -->
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title">Configuración de Publicación</h5>
+                                <br>
+                                <div class="form-group">
+                                    <label for="publish_date">Fecha de Publicación:</label>
+                                    <input type="date" name="publish_date" id="publish_date" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="publish_time">Hora de Publicación:</label>
+                                    <input type="time" name="publish_time" id="publish_time" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="duration">Duración de la Evaluación (en minutos):</label>
+                                    <input type="number" name="duration" id="duration" class="form-control" min="1" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preguntas -->
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div id="questions">
+                            <h3>Preguntas</h3>
+                            <button type="button" class="btn btn-primary" onclick="addQuestion()">
+                                <i class="fas fa-plus"></i> Agregar Pregunta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de Guardar -->
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-save"></i> Guardar Formulario
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <button type="submit" class="btn btn-success mt-4">Crear Formulario</button>
     </form>
 
-    <!-- Modal para mostrar las opciones agregadas o el texto -->
+    <!-- Modal para configurar respuestas correctas -->
     <div class="modal fade" id="respuestaModal" tabindex="-1" aria-labelledby="respuestaModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">
-                        <span>Etiqueta de la pregunta: <strong id="modalEtiqueta"></strong></span>
-                        <span>
-                            <label for="modalPoints">Puntos:</label>
-                            <input type="number" id="modalPoints" class="form-control points-input" min="0" value="0">
-                        </span>
-                    </h5>
+                    <h5 class="modal-title" id="respuestaModalLabel">Configurar Respuesta Correcta</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p id="modalOpcionesTitulo">Opciones:</p>
-                    <ul id="modalOpcionesLista"></ul> <!-- Aquí se mostrarán las opciones con checkbox -->
-                    <p id="modalTextoTitulo" style="display: none;">Texto:</p>
-                    <p id="modalTexto" style="display: none;"><strong>No hay texto</strong></p> <!-- Aquí se mostrará el texto -->
+                    <div class="form-group">
+                        <label>Pregunta:</label>
+                        <p id="modalQuestionLabel" class="font-weight-bold"></p>
+                    </div>
+                    <div class="form-group" id="modalOptionsContainer" style="display: none;">
+                        <label>Opciones:</label>
+                        <div id="modalOptionsList"></div>
+                    </div>
+                    <div class="form-group" id="modalTextAnswerContainer" style="display: none;">
+                        <label>Respuesta Correcta (Texto):</label>
+                        <input type="text" id="modalTextAnswer" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Puntos:</label>
+                        <input type="number" id="modalPoints" class="form-control" min="0" value="0">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="echoButton" onclick="syncChangesToQuestion()">Echo</button> <!-- Botón Echo -->
+                    <button type="button" class="btn btn-primary" onclick="saveModalData()">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Incluir Bootstrap JS y dependencias -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts -->
+    @section('js')
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            let questionIndex = 0;
+            let currentQuestionIndex = 0;
 
-    <script>
-        let questionIndex = 0;
-        let currentQuestionIndex = 0; // Para saber qué pregunta está activa en el modal
-        let selectedCheckmarks = {};  // Almacenar los checkboxes seleccionados en el modal
-        let modalInstance;  // Guardar la instancia del modal actual para cerrarlo después
-
-        function addQuestion() {
-            questionIndex++;
-            const questionsDiv = document.getElementById('questions');
-            const newQuestion = document.createElement('div');
-            newQuestion.className = 'question-container';
-            newQuestion.id = `question-${questionIndex}`;
-            newQuestion.innerHTML = `
-                <label>Tipo de Pregunta:</label>
-                <select name="questions[${questionIndex}][type]" id="question-type-${questionIndex}" onchange="handleQuestionTypeChange(this, ${questionIndex})">
-                    <option value="multiple_choice">Opción múltiple (Radio)</option>
-                    <option value="checkbox">Casillas de verificación (Checkbox)</option>
-                    <option value="option_with_text">Opción con entrada de texto</option>
-                </select>
-                <label>Etiqueta:</label>
-                <input type="text" name="questions[${questionIndex}][label]" id="label-${questionIndex}" required>
-                <div id="options-container-${questionIndex}" class="options-container" style="display: none;">
-                    <h3>Opciones</h3>
-                    <div id="options-${questionIndex}"></div>
-                    <button type="button" onclick="addOption(${questionIndex})">Agregar Opción</button>
-                </div>
-                <div id="text-option-${questionIndex}" class="text-option-container" style="display: none;">
-                    <label>Texto:</label>
-                    <input type="text" id="text-${questionIndex}" name="questions[${questionIndex}][text_option]" placeholder="Ingrese el texto aquí">
-                </div>
-                <div class="d-flex align-items-center">
-                    <label>Requerida:</label>
-                    <input type="checkbox" name="questions[${questionIndex}][required]" class="ml-2">
-                    <label class="ml-3">Puntos:</label>
-                    <input type="number" name="questions[${questionIndex}][points]" id="points-${questionIndex}" class="form-control points-input" min="0" value="0">
-                    <button type="button" class="ml-3 btn btn-primary" onclick="openRespuestaModal(${questionIndex})">Respuesta</button>
-                </div>
-                <button type="button" class="delete-question-btn" onclick="removeQuestion(${questionIndex})">Eliminar Pregunta</button>
-            `;
-            questionsDiv.appendChild(newQuestion);
-        }
-
-        function handleQuestionTypeChange(select, index) {
-            const selectedValue = select.value;
-            const optionsContainer = document.getElementById(`options-container-${index}`);
-            const textOptionContainer = document.getElementById(`text-option-${index}`);
-            const optionsDiv = document.getElementById(`options-${index}`);
-            
-            if (selectedValue === 'multiple_choice' || selectedValue === 'checkbox') {
-                optionsContainer.style.display = 'block';
-                textOptionContainer.style.display = 'none';
-                optionsDiv.innerHTML = ''; // Limpiar opciones anteriores
-                addOption(index); // Agregar primera opción
-            } else if (selectedValue === 'option_with_text') {
-                optionsContainer.style.display = 'none';
-                textOptionContainer.style.display = 'block';
-                optionsDiv.innerHTML = ''; // Limpiar opciones anteriores
-            }
-        }
-
-        function addOption(questionIndex) {
-            const optionsDiv = document.getElementById(`options-${questionIndex}`);
-            const optionCount = optionsDiv.children.length;
-            const questionType = document.querySelector(`select[name="questions[${questionIndex}][type]"]`).value;
-            let optionInput = '';
-
-            // Agregar el radio o checkbox a la izquierda según el tipo de pregunta
-            if (questionType === 'multiple_choice') {
-                optionInput = `<input type="radio" name="questions[${questionIndex}][correct_options][]" value="${optionCount}">`;
-            } else if (questionType === 'checkbox') {
-                optionInput = `<input type="checkbox" name="questions[${questionIndex}][correct_options][]" value="${optionCount}">`;
-            }
-
-            const newOption = document.createElement('div');
-            newOption.className = 'option-container';
-            newOption.innerHTML = `
-                ${optionInput}
-                <input type="text" name="questions[${questionIndex}][options][]" placeholder="Opción ${optionCount + 1}" required>
-                <i class="fas fa-check checkmark" id="checkmark-${questionIndex}-${optionCount}" style="display: none;"></i>
-                <button type="button" onclick="removeOption(this)">X</button>
-            `;
-            optionsDiv.appendChild(newOption);
-        }
-
-        function removeOption(button) {
-            button.parentElement.remove();
-        }
-
-        // Función para abrir el modal y mostrar las opciones agregadas o el texto
-        function openRespuestaModal(questionIndex) {
-            currentQuestionIndex = questionIndex; // Guardar el índice de la pregunta activa
-            modalInstance = new bootstrap.Modal(document.getElementById('respuestaModal')); // Crear instancia del modal
-            const etiqueta = document.getElementById(`label-${questionIndex}`).value; // Obtener valor de la etiqueta
-            const puntos = document.getElementById(`points-${questionIndex}`).value; // Obtener los puntos
-            const opcionesDiv = document.getElementById(`options-${questionIndex}`); // Div que contiene las opciones
-            const textoInput = document.getElementById(`text-${questionIndex}`); // Obtener el texto si es "Opción con entrada de texto"
-            const listaOpciones = document.getElementById('modalOpcionesLista');
-            const modalTextoTitulo = document.getElementById('modalTextoTitulo');
-            const modalTexto = document.getElementById('modalTexto');
-            const modalOpcionesTitulo = document.getElementById('modalOpcionesTitulo');
-            
-            // Limpiar el contenido de la lista en el modal
-            listaOpciones.innerHTML = '';
-            selectedCheckmarks = {}; // Reiniciar las selecciones del modal
-
-            // Mostrar la etiqueta de la pregunta en el modal
-            document.getElementById('modalEtiqueta').innerHTML = `${etiqueta}`;
-
-            // Mostrar los puntos en el modal
-            document.getElementById('modalPoints').value = puntos;
-
-            // Obtener el tipo de pregunta seleccionada
-            const tipoPregunta = document.getElementById(`question-type-${questionIndex}`).value;
-
-            // Mostrar el contenido adecuado según el tipo de pregunta
-            if (tipoPregunta === 'option_with_text') {
-                // Mostrar el texto y ocultar las opciones
-                modalTextoTitulo.style.display = 'block';
-                modalTexto.style.display = 'block';
-                modalOpcionesTitulo.style.display = 'none';
-                listaOpciones.style.display = 'none';
-
-                // Mostrar el texto si existe
-                if (textoInput && textoInput.value) {
-                    modalTexto.innerHTML = `<strong>${textoInput.value}</strong>`;
-                } else {
-                    modalTexto.innerHTML = `<strong>No hay texto</strong>`;
-                }
-            } else {
-                // Mostrar las opciones y ocultar el texto
-                modalTextoTitulo.style.display = 'none';
-                modalTexto.style.display = 'none';
-                modalOpcionesTitulo.style.display = 'block';
-                listaOpciones.style.display = 'block';
-
-                // Obtener todas las opciones y agregarlas a la lista del modal con checkbox
-                const opciones = opcionesDiv.querySelectorAll('input[type="text"]');
-                opciones.forEach((opcion, index) => {
-                    const isOptionChecked = document.getElementById(`checkmark-${questionIndex}-${index}`).style.display === 'block'; // Verificar si el checkmark está visible
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        <div class="checkbox-container">
-                            <input type="checkbox" name="correct_option_modal_${index}" onchange="storeCheckmark(${index}, this.checked)" ${isOptionChecked ? 'checked' : ''}>
-                            <span>Opción ${index + 1}: ${opcion.value}</span>
-                            <i class="fas fa-check checkmark"></i>
+            function addQuestion() {
+                questionIndex++;
+                const questionsDiv = document.getElementById('questions');
+                const newQuestion = document.createElement('div');
+                newQuestion.className = 'question-container card mb-3';
+                newQuestion.id = `question-${questionIndex}`;
+                newQuestion.innerHTML = `
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Tipo de Pregunta:</label>
+                            <select name="questions[${questionIndex}][type]" class="form-control" onchange="handleQuestionTypeChange(this, ${questionIndex})">
+                                <option value="">Selecciones las Opciones</option>
+                                <option value="multiple_choice">Opción múltiple (Radio)</option>
+                                <option value="checkbox">Casillas de verificación (Checkbox)</option>
+                                <option value="option_with_text">Opción con entrada de texto</option>
+                            </select>
                         </div>
-                    `;
-                    listaOpciones.appendChild(li);
-                });
+                        <div class="form-group">
+                            <label>Ingrese las preguntas:</label>
+                            <input type="text" name="questions[${questionIndex}][label]" class="form-control" required>
+                        </div>
+                        <div id="options-container-${questionIndex}" class="options-container" style="display: none;">
+                            <h4>Opciones</h4>
+                            <div id="options-${questionIndex}"></div>
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="addOption(${questionIndex})">
+                                <i class="fas fa-plus"></i> Agregar Opción
+                            </button>
+                        </div>
+                        <div id="text-option-${questionIndex}" class="text-option-container" style="display: none;">
+                            <label>Texto:</label>
+                            <input type="text" name="questions[${questionIndex}][text_option]" class="form-control" placeholder="Ingrese el texto aquí">
+                        </div>
+                        <div class="form-group">
+                            <label>Puntos:</label>
+                            <input type="number" name="questions[${questionIndex}][points]" id="points-${questionIndex}" class="form-control points-input" min="0" value="0" required>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" name="questions[${questionIndex}][required]" class="form-check-input" value="1">
+                            <input type="hidden" name="questions[${questionIndex}][required]" value="0">
+                            <label class="form-check-label">Requerida</label>
+                        </div>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="removeQuestion(${questionIndex})">
+                            <i class="fas fa-trash"></i> Eliminar Pregunta
+                        </button>
+                        <button type="button" class="btn btn-info btn-sm" onclick="openModal(${questionIndex})">
+                            <i class="fas fa-cog"></i> Configurar Respuesta
+                        </button>
+                        <input type="hidden" name="questions[${questionIndex}][correct_answer]" id="correctAnswer-${questionIndex}">
+                        <div id="correctAnswerDisplay-${questionIndex}" class="mt-2"></div>
+                    </div>
+                `;
+                questionsDiv.appendChild(newQuestion);
             }
 
-            modalInstance.show();
-        }
+            function handleQuestionTypeChange(select, index) {
+                const optionsContainer = document.getElementById(`options-container-${index}`);
+                const textOptionContainer = document.getElementById(`text-option-${index}`);
 
-        // Almacenar el estado de los checkboxes seleccionados en el modal
-        function storeCheckmark(optionIndex, isChecked) {
-            selectedCheckmarks[optionIndex] = isChecked;
-        }
+                if (select.value === 'multiple_choice' || select.value === 'checkbox') {
+                    optionsContainer.style.display = 'block';
+                    textOptionContainer.style.display = 'none';
+                } else if (select.value === 'option_with_text') {
+                    optionsContainer.style.display = 'none';
+                    textOptionContainer.style.display = 'block';
+                }
+            }
 
-        // Función para aplicar los cambios al presionar el botón Echo
-        function syncChangesToQuestion() {
-            // Sincronizar los puntos del modal al campo de puntos en la pregunta
-            const modalPoints = document.getElementById('modalPoints').value;
-            const questionPoints = document.getElementById(`points-${currentQuestionIndex}`);
-            questionPoints.value = modalPoints;
+            function addOption(questionIndex) {
+                const optionsDiv = document.getElementById(`options-${questionIndex}`);
+                const optionCount = optionsDiv.children.length;
+                const newOption = document.createElement('div');
+                newOption.className = 'option-container form-group';
+                newOption.innerHTML = `
+                    <input type="text" name="questions[${questionIndex}][options][]" class="form-control" placeholder="Opción ${optionCount + 1}" required>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="removeOption(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                optionsDiv.appendChild(newOption);
+            }
 
-            // Sincronizar los checkmarks seleccionados en las opciones
-            Object.keys(selectedCheckmarks).forEach(optionIndex => {
-                const mainCheckmark = document.getElementById(`checkmark-${currentQuestionIndex}-${optionIndex}`);
-                mainCheckmark.style.display = selectedCheckmarks[optionIndex] ? 'block' : 'none';
-            });
+            function removeOption(button) {
+                button.parentElement.remove();
+            }
 
-            // Cerrar el modal después de hacer los cambios
-            modalInstance.hide();
-        }
+            function removeQuestion(index) {
+                const questionDiv = document.getElementById(`question-${index}`);
+                questionDiv.remove();
+            }
 
-        function removeQuestion(index) {
-            const questionDiv = document.getElementById(`question-${index}`);
-            questionDiv.remove();
-        }
-    </script>
-</body>
+            function openModal(questionIndex) {
+                currentQuestionIndex = questionIndex;
+                const questionDiv = document.getElementById(`question-${questionIndex}`);
+                const questionLabel = questionDiv.querySelector('input[name="questions[' + questionIndex + '][label]"]').value;
+                const questionType = questionDiv.querySelector('select[name="questions[' + questionIndex + '][type]"]').value;
+                const options = questionDiv.querySelectorAll('input[name="questions[' + questionIndex + '][options][]"]');
+                const points = questionDiv.querySelector(`#points-${questionIndex}`).value;
+
+                // Mostrar la etiqueta de la pregunta en el modal
+                document.getElementById('modalQuestionLabel').textContent = questionLabel;
+
+                // Mostrar las opciones en el modal (solo para preguntas de opción múltiple o checkbox)
+                const optionsContainer = document.getElementById('modalOptionsContainer');
+                const optionsList = document.getElementById('modalOptionsList');
+                optionsList.innerHTML = '';
+                if (questionType === 'multiple_choice' || questionType === 'checkbox') {
+                    optionsContainer.style.display = 'block';
+                    options.forEach((option, index) => {
+                        const optionText = option.value;
+                        const optionDiv = document.createElement('div');
+                        optionDiv.className = 'form-check';
+                        optionDiv.innerHTML = `
+                            <input class="form-check-input" type="checkbox" id="option-${index}" value="${optionText}" onchange="updateCorrectAnswer()">
+                            <label class="form-check-label" for="option-${index}">${optionText}</label>
+                        `;
+                        optionsList.appendChild(optionDiv);
+                    });
+                } else {
+                    optionsContainer.style.display = 'none';
+                }
+
+                // Mostrar el campo de texto para la respuesta correcta (solo para preguntas de texto)
+                const textAnswerContainer = document.getElementById('modalTextAnswerContainer');
+                if (questionType === 'option_with_text') {
+                    textAnswerContainer.style.display = 'block';
+                } else {
+                    textAnswerContainer.style.display = 'none';
+                }
+
+                // Mostrar los puntos en el modal
+                document.getElementById('modalPoints').value = points;
+
+                // Mostrar el modal
+                const modal = new bootstrap.Modal(document.getElementById('respuestaModal'));
+                modal.show();
+            }
+
+            function updateCorrectAnswer() {
+                const selectedOptions = [];
+                const checkboxes = document.querySelectorAll('#modalOptionsList .form-check-input:checked');
+                checkboxes.forEach(checkbox => {
+                    selectedOptions.push(checkbox.value);
+                });
+
+                // Actualizar el campo de Respuesta Correcta en el modal
+                document.getElementById('modalCorrectAnswer').value = selectedOptions.join(', ');
+            }
+
+            function saveModalData() {
+                const questionDiv = document.getElementById(`question-${currentQuestionIndex}`);
+                const questionType = questionDiv.querySelector('select[name="questions[' + currentQuestionIndex + '][type]"]').value;
+
+                let correctAnswer = '';
+                if (questionType === 'multiple_choice' || questionType === 'checkbox') {
+                    const selectedOptions = [];
+                    const checkboxes = document.querySelectorAll('#modalOptionsList .form-check-input:checked');
+                    checkboxes.forEach(checkbox => {
+                        selectedOptions.push(checkbox.value);
+                    });
+                    correctAnswer = selectedOptions.join(',');
+                } else if (questionType === 'option_with_text') {
+                    correctAnswer = document.getElementById('modalTextAnswer').value;
+                }
+
+                const correctAnswerInput = document.getElementById(`correctAnswer-${currentQuestionIndex}`);
+                correctAnswerInput.value = correctAnswer;
+
+                // Actualizar los puntos en el formulario
+                const pointsInput = document.getElementById(`points-${currentQuestionIndex}`);
+                const modalPoints = document.getElementById('modalPoints').value;
+                pointsInput.value = modalPoints;
+
+                // Mostrar la respuesta correcta en el formulario
+                const correctAnswerDisplay = document.getElementById(`correctAnswerDisplay-${currentQuestionIndex}`);
+                correctAnswerDisplay.innerHTML = `
+                    <span class="text-success">
+                        <i class="fas fa-check"></i> Respuesta Correcta: ${correctAnswer}
+                    </span>
+                `;
+
+                // Cerrar el modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('respuestaModal'));
+                modal.hide();
+            }
+        </script>
+    @stop
 @stop
-

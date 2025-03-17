@@ -32,6 +32,86 @@
 
 <style>
 
+.color-white{
+    color:white;
+}
+.flip-box{
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-top:50px;
+}
+ .flip-box-front,
+.flip-box-back{
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    min-height: 475px;
+    transition:transform 0.7s cubic-bezier(.4,.2,.2,1);
+    backface-visibility: hidden;
+
+} 
+.flip-box-front{
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;  
+}
+.flip-box:hover .flip-box-front{
+    transform:rotateY(-180deg);
+    transform-style: preserve-3d;
+
+}
+.flip-box-back{
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  transform:rotateY(180deg);
+  transform-style: preserve-3d;
+}
+.flip-box:hover .flip-box-back{
+    transform:rotateY(0deg);
+    transform-style: preserve-3d;
+
+}
+ .flip-box .inner{
+   position:absolute; 
+   left:0;
+  width: 100%;
+  padding: 60px;
+  outline:1px solid transparent;
+  perspective:inherit;
+  z-index:2;
+  transform: translateY(-50%)translateZ(60px) scale(.94);
+  top:50%; 
+  
+} 
+.flip-box-header{
+  font-size:30px;
+  color:white;
+
+}
+.flip-box p{
+  font-size:20px;
+  line-height:1.5rem;
+}
+.flip-box-img{
+  margin-top:25px;
+}
+.flip-box-button{
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 25px;
+  padding: 15px 20px;
+  text-transform: uppercase;
+}
+
+
+
 </style>
 
 
@@ -109,7 +189,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="heding">
-           <h2>INICIO  DE LA MUSICA SONORO</h2>
+           <h2>INICIO  DE LA MUSICA SONIDOS</h2>
         </div>
       </div>
     </div>
@@ -117,6 +197,166 @@
 </div>
 
 
+<div class="container">
+  <div class="row">
+    <!-- TARJETA 1 -->
+    <div class= "box-item col-md-4">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">NATURALEZA</h3>
+              <p>La naturaleza hace música con sonidos como el viento, el agua y los animales, creando armonías mágicas.</p>
+          
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">NATURALEZA</h3>
+              <p>La naturaleza hace música con sonidos como el viento, el agua y los animales, creando armonías mágicas.</p>
+       
+              <br>
+
+                <!-- <button class="flip-box-button" >ingrese para ver</button> -->
+                <a class="btn btn-primary" class="flip-box-button" href="{{url('/naturaleza')}}">ingrese para ver</a> 
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+
+    <!-- TARJETA 2 -->
+    <div class= "box-item col-md-4">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">ANIMALES</h3>
+              <p>Hacen sonidos para hablar o cantar. Los perros ladran, los gatos maúllan y las ranas croan. Cada uno tiene su propio ruido especial. </p>
+           
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">ANIMALES</h3>
+              <p>Hacen sonidos para hablar o cantar. Los perros ladran, los gatos maúllan y las ranas croan. Cada uno tiene su propio ruido especial. </p>
+             
+              <a class="btn btn-primary" class="flip-box-button" href="{{url('/animales')}}">ingrese para ver</a> 
+              
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+    <!-- TARJETA 3 -->
+    <div class= "box-item col-md-4">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/B69Qpx2C/pian2.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">INSTRUMENTOS</h3>
+              <p> Hacen música con sonidos diferentes: guitarras, pianos, tambores y flautas suenan único. </p>
+        
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/B69Qpx2C/pian2.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">INSTRUMENTOS</h3>
+              <p> Hacen música con sonidos diferentes: guitarras, pianos, tambores y flautas suenan único. </p>
+  
+              <a class="btn btn-primary" class="flip-box-button" href="{{url('/instrumentos')}}">ingrese para ver</a> 
+              
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- /-------------------------------------------------------/ -->
+<div class="container">
+  <div class="row">
+    <!-- TARJETA 1 -->
+    <div class= "box-item col-md-6">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">PERSONAS</h3>
+              <p>Las personas hacen sonidos con la voz, como hablar, cantar, reír, llorar o cantar. </p>
+          
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">PERSONAS</h3>
+              <p>Las personas hacen sonidos con la voz, como hablar, cantar, reír, llorar o cantar. </p>
+       
+              <br>
+
+                <!-- <button class="flip-box-button" >ingrese para ver</button> -->
+                <a class="btn btn-primary" class="flip-box-button" href="{{url('/iniciomusica')}}">ingrese para ver</a> 
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+
+    <!-- TARJETA 2 -->
+    <div class= "box-item col-md-6">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">COTIDIANOS</h3>
+              <p>Los sonidos cotidianos son como el reloj, la lluvia, los coches, puertas y risas diarias. </p>
+           
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">COTIDIANOS</h3>
+              <p>Los sonidos cotidianos son como el reloj, la lluvia, los coches, puertas y risas diarias. </p>
+              
+                <button class="flip-box-button">ingrese para ver</button>
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+   
+
+
+  </div>
+</div>
 
 
 

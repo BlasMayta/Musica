@@ -5,7 +5,10 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="staticBackdropLabel">NUEVO DOCENTE</h4>    
+             
+               <br>
+                <h4 class="modal-title text-aling-center" id="staticBackdropLabel">FORMULARIO DE REGISTRO - NUEVO DOCENTE</h4>
+                <br>    
             </div>
             <div class="modal-body">
                 <form action="{{ url('docentes') }}" method="post" entype="multipart/form-data">

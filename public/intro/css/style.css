@@ -971,7 +971,7 @@ transition: all 0.3s ease-in;
 }
  
  .header-top {
-     background:url(../images/banner2.jpg);
+     background:url(../images/Cuadros2.png);
      background-size: 100% 100%;
      background-repeat: no-repeat;
      padding-bottom: 50px;
@@ -996,7 +996,8 @@ transition: all 0.3s ease-in;
 }
  .text-bg {text-align: center;}
   .text-bg span {
-     font-size: 80px;
+     /* font-size: 35px; */
+     font-size: 80px; 
 line-height: 80px;
 color: #0fc9da;
 text-transform: uppercase;
@@ -1004,7 +1005,8 @@ text-transform: uppercase;
  .text-bg h1 {
     color: #fff;
 padding-top: 20px;
-font-size: 100px;
+/* font-size: 45px; */
+font-size: 100px; 
 line-height: 85px;
 padding-bottom: 40px;
 text-transform: uppercase;
@@ -1151,7 +1153,7 @@ margin-top: 90px;
      padding: 0;
      color: #020d0f;
      line-height: 70px;
-     font-size: 70px;
+     font-size: 50px;
 
  }
  .about .about-box p {

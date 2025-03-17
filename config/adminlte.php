@@ -302,6 +302,11 @@ return [
                     'url'  => 'chatgpt',
                     'icon' => 'fas fa-fw fa-city',
                 ],
+                [
+                    'text' => 'DEBATE',
+                    'url'  => 'debate',
+                    'icon' => 'fas fa-fw fa-city',
+                ],
          
             ],
         ],
@@ -405,26 +410,28 @@ return [
                 [
                     'text' => 'Docente',
                     'url'  => 'docentes',
-                    'icon' => 'fas fa-fw fa-city',
+                    'icon' => 'fas fa-chalkboard-teacher',
+                   
+                    
                     // 'can'  => 'docentes',
                 ],
                 [
                     'text' => 'Estudiante',
                     'url'  => 'estudiantes',
-                    'icon' => 'fas fa-user-check',
+                    'icon' => 'fas fa-user-friends',
                     // 'can'  => 'estudiantes',
                 ],
                 [
                     'text' => 'Tutor',
                     'url'  => 'tutors',
-                    'icon' => 'fas fa-door-open',
+                    'icon' => 'fas fa-user-clock',
                     // 'can'  => 'tutors',
                 ],
 
                 [
-                    'text' => '22Formulario',
+                    'text' => 'Formulario',
                     'url'  => 'forms',
-                    'icon' => 'fas fa-user-check',
+                    'icon' => '	fas fa-poll-h',
                 ],
         
         [

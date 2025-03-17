@@ -24,12 +24,16 @@ class GameInicialController extends Controller
     }
     public function mental1()
     {
-        return view('juego.juegomental');
+        return view('juego.juegomenta1');
     }
 
     public function comparar()
     {
         return view('juego.juegocompa');
+    }
+    public function compara1()
+    {
+        return view('juego.juegocompara1');
     }
 }
 

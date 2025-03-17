@@ -16,15 +16,17 @@ use App\Http\Controllers\TextoController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\FormularioController;
 use App\Http\Controllers\controllersGame\GameInicialController;
+use App\Http\Controllers\ControllerContenido\ContenidoController;
 use App\Http\Controllers\ChatgptController;
 // use App\Http\Controllers\Admin\UserController;
 
-use App\Http\Controllers\ContenidoController;
+
 
 use App\Http\Controllers\Admin\HomeController;
 use App\http\Controllers\PermissionController;
 use App\http\Controllers\UserController;
 use App\http\Controllers\RolesController;
+use App\Http\Controllers\ChatController;
 
 
 use App\Http\Controllers\FormController;
@@ -71,7 +73,7 @@ Route::resource('checks', CheckController:: class)->names('check');
 Route::resource('textos', TextoController:: class)->names('texto');
 
 */
- // FORMULARIO DE TEST EMPLEANDO LOGICA DIFUSA
+ // FORMULARIO DE TEST 
 Route::get('/formulario', [FormularioController::class, 'index']);
 Route::post('/formulario', [FormularioController::class, 'store']);
 
@@ -79,6 +81,9 @@ Route::post('/formulario', [FormularioController::class, 'store']);
 Route::resource('forms', FormController::class)->names('forms');
 Route::post('/forms/{form}/responses', [FormController::class, 'storeResponse'])->name('forms.responses.store');
 Route::get('/thankyou', [FormController::class, 'thankYou'])->name('forms.thankyou');
+
+Route::get('/forms/{id}/edit', [FormController::class, 'edit'])->name('forms.edit');
+Route::put('/forms/{id}', [FormController::class, 'update'])->name('forms.update');
 //--------------------------------------------------------------------------
 /*
 Route::get('/', [FormController::class, 'index'])->name('forms.index');
@@ -112,8 +117,43 @@ Route:: get('/iniciomusica',[ContenidoController:: class, 'iniciomusica'])->name
 
 Route::get('/iniciosonoro',[ContenidoController:: class, 'sonoro'])->name('contenidoinicio.iniciosonoro');
 
+//LECCIONES
+Route::get ('/pentagrama',[ContenidoController:: class, 'pentagrama'])->name('contenidoinicio.pentagrama');
+Route:: get('/lasnotas', [ContenidoController:: class,'nota'])->name('contenidoinicio.lasnotas');
+Route::get('/figuras', [ContenidoController:: class, 'figura'])->name('contenidoinicio.figuras');
+Route::get('/claves',[ContenidoController::class, 'clave'])->name('contenidoinicio.claves');
+Route::get('/puntillos',[ContenidoController::class,'puntillo'])->name('contenidoinicio.puntillos');
+Route::get('/laligadura',[ContenidoController::class, 'ligadura'])->name('contenidoinicio.laligadura');
+Route::get('/eltrisillo',[ContenidoController::class, 'trisillo'])->name('contenidoinicio.eltrisillo');
 
+// INICIO DE LA MUSICA
+
+Route::get('/naturaleza',[ContenidoController::class, 'naturaleza'])->name('sonoro.naturaleza');
+Route::get('/animales',[ContenidoController::class, 'animales'])->name('sonoro.animales');
+Route::get('/instrumentos',[ContenidoController::class, 'instrumentos'])->name('sonoro.instrumentos');
+// -------------------------------------------------------------------------------------------
+// INSTRUMENTOS
+// --------------------------------------------------------------------------------
+Route::get('/piano',[InstrumentoController::class, 'index'])->name('piano.index');
+Route::get('/zampona',[InstrumentoController::class, 'zampona'])->name('piano.zampona');
+
+// -------------------------------------------------------------------------------------------
+// DEBATE
+// --------------------------------------------------------------------------------
+
+// Rutas protegidas por autenticación
+// Route::middleware('auth')->group(function () {
+//      Route::prefix('chat')->group(function () {
+         Route::get('/chat', [ChatController::class, 'index'])->name('debate.chat');
+        Route::post('/enviar-mensaje', [ChatController::class, 'enviarMensaje'])->name('chat.enviar');
+         Route::get('/limpiar-chat', [ChatController::class, 'limpiarChat'])->name('chat.limpiar');
+//      });
+//  });
 //----------------------------------------------------------------
+// NOTA
+// -------------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------
 
 //JUEGOS 
 Route::get('/juego',[GameInicialController:: class, 'index'])->name('juego.index');
@@ -125,6 +165,8 @@ Route::get('/juegomental', [GameInicialController:: class, 'mental'])->name('jue
 Route::get('/juegomenta1',[GameInicialController:: class, 'mental1'])->name('juego.juegomenta1');
 
 Route::get('/juegocompa',[GameInicialController:: class, 'comparar'])->name('juego.juegocompa');
+
+Route::get('/juegocompara1',[GameInicialController:: class,'compara1'])->name('juego.juegocompara1');
 
 
 
