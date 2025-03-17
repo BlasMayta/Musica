@@ -244,7 +244,7 @@
           <div class="inner color-white">
               <h3 class="flip-box-header">TEORIA DE LA MUSICA</h3>
                  <p>Es el estudio de los elementos que componen la música, y sirve para comprender cómo funciona, crear, analizar e interpretar música</p>
-                <button class="flip-box-button">ingrese para ver</button>
+                 <a class="btn btn-primary" class="flip-box-button" href="{{url('/principal')}}">ingrese para ver</a> 
               
           </div>
 

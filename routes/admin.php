@@ -21,6 +21,7 @@ use App\Http\Controllers\ChatgptController;
 // use App\Http\Controllers\Admin\UserController;
 
 
+use App\Http\Controllers\AudioController;
 
 use App\Http\Controllers\Admin\HomeController;
 use App\http\Controllers\PermissionController;
@@ -34,6 +35,58 @@ use App\Http\Controllers\FormController;
 
 
 use Illuminate\Support\Facades\Route;
+
+
+use App\Http\Controllers\NoteController;
+
+use App\Http\Controllers\EvainstrumentoController;
+
+
+use App\Http\Controllers\TeoriaQuizController;
+use App\Http\Controllers\Teoriap1QuizController;
+
+use App\Http\Controllers\ReconocimientoSonidoController;
+
+Route::get('/subir-audio', function () {
+    return view('recosonido.upload');
+})->name('mostrar.formulario');
+
+Route::post('/subir-audio', [ReconocimientoSonidoController::class, 'subirAudio'])->name('subir.audio');
+
+
+Route::get('/teoriap1-quiz', [Teoriap1QuizController::class, 'menu'])->name('teoriap1.quiz.menu');
+Route::get('/teoriap1-quiz/{level}', [Teoriap1QuizController::class, 'form'])->name('teoriap1.quiz.form');
+Route::post('/teoriap1-quiz/{level}', [Teoriap1QuizController::class, 'evaluate'])->name('teoriap1.quiz.evaluate');
+
+
+///------------------------------------------------------------------------
+Route::get('/teoria-quiz', [TeoriaQuizController::class, 'index'])->name('teoria.quiz.index');
+Route::post('/teoria-quiz', [TeoriaQuizController::class, 'evaluate'])->name('teoria.quiz.evaluate');
+
+/////____________________________________________________________
+Route::get('/instru', [EvainstrumentoController::class, 'menu'])->name('instru.menu');
+Route::get('/instru/{nivel}', [EvainstrumentoController::class, 'form'])->name('instru.form');
+Route::post('/instru/{nivel}', [EvainstrumentoController::class, 'evaluate'])->name('instru.evaluate');
+
+//////________________________________________________
+Route::get('/detector', [NoteController::class, 'index'])->name('notes.index');
+Route::post('/guardar-nota', [NoteController::class, 'store'])->name('notes.store');
+Route::get('/historial', [NoteController::class, 'show'])->name('notes.history');
+// use App\Models\Audio;
+
+// Route::get('/test-insert', function () {
+//     $audio = Audio::create([
+//         'features' => ['mfcc' => [1.23, 4.56, 7.89]]
+//     ]);
+//     return $audio;
+// });
+
+// use Illuminate\Support\Facades\Log;
+
+// Route::get('/test-log', function () {
+//     Log::error('Este es un mensaje de prueba para verificar los logs.');
+//     return 'Log generado, revisa storage/logs/laravel.log';
+// });
 
 /**Route::any('instrumento', function(){
     return request('search');
@@ -54,6 +107,27 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('users',UserController::class)->only('index','edit','update')->names('admin.users');
 //Route::get('instrumentos/piano', [App\Http\Controllers\InstrumentoController::class,'piano'])->name('instrumentos.piano');
 //Route::get('/instrumentos/', [InstrumentoController::class, 'piano']);
+
+// Route::resource('audios', AudioController::class)->names('audio');
+// Route::post('/audios', [AudioController::class, 'store'])->name('audio.store');
+
+
+// Grupo de rutas para el recurso "audios"
+//Route::prefix('audio')->group(function () {
+    // Si deseas listar los audios almacenados (opcional)
+   // Route::get('/', [AudioController::class, 'index'])->name('audio.index');
+
+    // Ruta para guardar un nuevo registro de audio
+   // Route::post('/', [AudioController::class, 'store'])->name('audio.store');
+
+    // Si deseas ver un audio en particular (opcional)
+    // Route::get('/{audio}', [AudioController::class, 'show'])->name('audio.show');
+// });
+////////////////////////
+ Route::prefix('audio')->group(function () {
+     Route::post('/', [AudioController::class, 'store'])->name('audio.store'); // Guardar audio
+     Route::get('/', [AudioController::class, 'index'])->name('audio.index');   // Listar audios
+ });
 
 Route::resource('instrumentos', InstrumentoController:: class)->names('piano');
 
@@ -118,6 +192,13 @@ Route:: get('/iniciomusica',[ContenidoController:: class, 'iniciomusica'])->name
 Route::get('/iniciosonoro',[ContenidoController:: class, 'sonoro'])->name('contenidoinicio.iniciosonoro');
 
 //LECCIONES
+Route::get ('/principal',[ContenidoController:: class, 'principal'])->name('contenidoinicio.principal');
+//PRIMER TRIMESTRE
+Route::get ('/ptecvocal',[ContenidoController:: class, 'ptecvocal'])->name('contenidoinicio.ptecvocal');
+Route::get ('/pentonacion',[ContenidoController:: class, 'pentonacion'])->name('contenidoinicio.pentonacion');
+Route::get ('/pparametro',[ContenidoController:: class, 'pparametro'])->name('contenidoinicio.pparametro');
+
+
 Route::get ('/pentagrama',[ContenidoController:: class, 'pentagrama'])->name('contenidoinicio.pentagrama');
 Route:: get('/lasnotas', [ContenidoController:: class,'nota'])->name('contenidoinicio.lasnotas');
 Route::get('/figuras', [ContenidoController:: class, 'figura'])->name('contenidoinicio.figuras');
@@ -190,6 +271,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'
 
     
 });
+
 
 
 // Route::group(['middleware' => 'auth'], function () {

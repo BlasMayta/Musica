@@ -303,6 +303,11 @@ return [
                     'icon' => 'fas fa-fw fa-city',
                 ],
                 [
+                    'text' => 'noooo',
+                    'url'  => 'note',
+                    'icon' => 'fas fa-fw fa-city',
+                ],
+                [
                     'text' => 'DEBATE',
                     'url'  => 'debate',
                     'icon' => 'fas fa-fw fa-city',

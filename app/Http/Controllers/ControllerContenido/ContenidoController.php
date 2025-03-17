@@ -12,7 +12,10 @@ class ContenidoController extends Controller
         return view('contenidoinicio.index');
     }
     
-
+    public function principal()
+    {
+        return view('contenidoinicio.principal');
+    }
 
     public function iniciomusica()
     {
@@ -58,6 +61,19 @@ class ContenidoController extends Controller
     public function trisillo()
     {
         return view('contenidoinicio.eltrisillo');
+    }
+    //CONTENIDO PRIMER TRIMESTRE
+    public function ptecvocal()
+    {
+        return view('contenidoinicio.ptecvocal');
+    }
+    public function pentonacion()
+    {
+        return view('contenidoinicio.pentonacion');
+    }
+    public function pparametro()
+    {
+        return view('contenidoinicio.pparametro');
     }
 
     // CONTENIDO INICIO DE LA MUSICA SONORO
