@@ -1,50 +1,120 @@
-* { box-sizing:border-box; }
- 
-body{ margin:0; background:#222; }
-.ul_1 {
-    height:28em; width:40em;
-    color:#fff;
-  margin:5em auto; padding:3em 0 0 3em; position:relative; 
-  border:1px solid #160801; border-radius:1em; 
-  background:-webkit-gradient(linear, right bottom, left top, color-stop(0%,rgba(0,0,0,0.3)), color-stop(100%,rgba(0,0,0,0))), url('https://f.cl.ly/items/2q1f3t0C3R1b0g081w3n/vwood.png');
-box-shadow:0 0 50px rgba(0,0,0,0.5) inset, 0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5); }
- 
-li { margin:0; padding:0; list-style:none; position:relative; float:left; }
-
-ul .white {
-    height:16em; width:4em; z-index:1;
-    
-    border-left:1px solid rgb(243, 237, 237);
-    border-bottom:1px solid rgb(247, 242, 242);
-    border-radius:0 0 5px 5px;
-    box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(243, 240, 240, 0.973);
-    background: linear-gradient(top, #eee 0%,#fff 100%);
-}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
   
-ul .white:active {
+  body {
+    background: #222;
+    font-family: Arial, sans-serif;
+  }
   
-    border-top:1px solid rgb(245, 242, 242);
-    border-left:1px solid rgb(247, 247, 247);
-    border-bottom:1px solid rgb(248, 244, 244);
-    box-shadow:2px 0 3px rgba(245, 243, 243, 0.938) inset, -5px 5px 20px rgba(243, 240, 240, 0.979) inset,0 0 3px rgb(255, 251, 251);
-    background: linear-gradient(top, #fff 0%,#e9e9e9 100%);
-}
-
-.black {
-    
-    height:8em; width:2em; margin:0 0 0 -1em; z-index:2;
-    border:1px solid #000;
-    border-radius:0 0 3px 3px;
-    box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -5px 2px 3px rgba(0,0,0,0.6) inset, 0 2px 4px rgba(0,0,0,0.5);
-    background:linear-gradient(45deg, #222 0%,#555 100%);
-}
- 
-.black:active {
-    box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset, 0 -2px 2px 3px rgba(0,0,0,0.6) inset, 0 1px 2px rgba(0,0,0,0.5);
-    background:linear-gradient(left, #444 0%,#222 100%);
-}
- 
-.d,.e,.g,.b { margin:0 0 0 0 -1em;  }
+  /* Contenedor principal del piano */
+  .ul_1 {
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+    margin: 2em auto;
+    padding: 1em;
+    position: relative;
+    border: 1px solid #160801;
+    border-radius: 1em;
+    background: linear-gradient(to top left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), url('https://f.cl.ly/items/2q1f3t0C3R1b0g081w3n/vwood.png');
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5) inset, 0 1px rgba(212, 152, 125, 0.2) inset, 0 5px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
   
-ul li:first-child { border-radius:5px 0 5px 5px; }
-ul li:last-child { border-radius:0 5px 5px 5px; }
+  /* Lista de teclas */
+  .set {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Teclas blancas */
+  .white {
+    height: 16em;
+    width: 4em;
+    z-index: 1;
+    border-left: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0 0 5px 5px;
+    box-shadow: -1px 0 0 rgba(255, 255, 255, 0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, #eee 0%, #fff 100%);
+    cursor: pointer;
+    transition: all 0.1s ease;
+  }
+  
+  .white:active {
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1) inset, -5px 5px 20px rgba(0, 0, 0, 0.1) inset, 0 0 3px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, #fff 0%, #e9e9e9 100%);
+  }
+  
+  /* Teclas negras */
+  .black {
+    height: 8em;
+    width: 2em;
+    margin: 0 0 0 -1em;
+    z-index: 2;
+    border: 1px solid #000;
+    border-radius: 0 0 3px 3px;
+    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, #222 0%, #555 100%);
+    cursor: pointer;
+    transition: all 0.1s ease;
+  }
+  
+  .black:active {
+    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to left, #444 0%, #222 100%);
+  }
+  
+  /* Ajustes para teclas específicas */
+  .d,
+  .e,
+  .g,
+  .b {
+    margin-left: -1em;
+  }
+  
+  /* Bordes redondeados para la primera y última tecla */
+  .set li:first-child {
+    border-radius: 5px 0 5px 5px;
+  }
+  
+  .set li:last-child {
+    border-radius: 0 5px 5px 5px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .white {
+      width: 3em;
+      height: 12em;
+    }
+  
+    .black {
+      width: 1.5em;
+      height: 6em;
+      margin: 0 0 0 -0.75em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .white {
+      width: 2em;
+      height: 10em;
+    }
+  
+    .black {
+      width: 1em;
+      height: 5em;
+      margin: 0 0 0 -0.5em;
+    }
+  }

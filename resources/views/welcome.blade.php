@@ -32,6 +32,7 @@
 </head>
 <!-- body -->
 
+
 <body class="main-layout">
   <!-- loader  -->
   <div class="loader_bg">
@@ -49,7 +50,7 @@
               <div class="full">
                 <div class="center-desk">
                   <div class="logo">
-                    <a href="index.html"><img src="intro/images/logo.png" alt="#" /></a>
+                    <a href="index.html"><img src="intro/images/logo1.png" alt="#" /></a>
                   </div>
                 </div>
               </div>
@@ -64,10 +65,14 @@
                   
                       <li> <a href="{{url('himno')}}">himno</a> </li>
                       <li> <a href="{{url('contenidoinicio')}}">Contenido </a> </li>
-                      <li> <a href="{{url('juego')}}">juegos</a> </li>
-                      <li> <a href="contact.html">Instrumento</a></li>
-                      
+                      <li> <a href="{{url('juego')}}">juegos</a></li>
 
+                      <li> <a href="{{url('piano')}}">Instrumento</a>
+                            <ul class="submenu">
+                              <li><a href="{{url('piano')}}"">Piano</a></li>
+                              <li><a href="{{url('zampona')}}"">Zampoña</a></li>
+                            </ul>
+                      </li>
                       @if (Route::has('login'))
                         <li> <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a></li> 
                         @auth
@@ -109,10 +114,10 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="text-bg">
-                      <span>BLASS</span>
-                      <h1>MPRUEBA MISTER MAYTA</h1>
-                      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
-                      <a href="#">Music & Entertainment</a> <a href="#">Buy Tickets </a>
+                      <span>U. E. VILLA PUSUMA</span>
+                      <h1>CONTENIDO DE HIMNOS</h1>
+                      <p>se podra ver todo el contenido de Himnos de Bolivia como ser: himnos Patrioticos, Himnos de Cada Departamento y Himnos Civicos</p>
+                      <a href="{{url('/himno')}}">Ingrese para ver</a> <a href="#">Buy Tickets </a>
                     </div>
                   </div>
                 </div>
@@ -127,10 +132,10 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="text-bg">
-                        <span>JOHN</span>
-                      <h1>PRUEBA JOHN</h1>
-                      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
-                      <a href="#">Music & Entertainment</a><a href="#">Buy Tickets </a>
+                        <span>U. E. VILLA PUSUMA</span>
+                      <h1>CONTENIDO DE MUSICA</h1>
+                      <p> Donde podras ver todo el contenido de la pagina web que podras ver cada uno del avance anual en cual podras ver detalladamente </p>
+                      <a href="{{url('/contenidoinicio')}}">Ingrese para ver </a><a href="#">Buy Tickets </a>
                     </div>
                   </div>
 
@@ -148,10 +153,10 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="text-bg">
-                        <span>NESTOR</span>
-                      <h1>PRUEBA NESTOR</h1>
-                      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
-                      <a href="#">Music & Entertainment</a> <a href="#">Buy Tickets </a>
+                        <span>U. E. VILLA PUSUMA</span>
+                      <h1>CONTENIDO DE JUEGOS</h1>
+                      <p>Contenido de Juegos podras ver Los juegos realizados donde podras jugar y eb cual tambien te servira para memorizar</p>
+                      <a href="{{url('juego')}}">Ingrese para ver</a> <a href="#">Buy Tickets </a>
                     </div>
                   </div>
                 </div>
@@ -184,8 +189,10 @@
     <div class="row display_boxflex">
       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
         <div class="about-box">
-          <h2>About Us</h2>
-          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
+          <h2>Bienvenido a la U. E. Villa Pusuma</h2>
+          <p>La unidad eductativa se Encuentra en la Provicia Ingavi del Municipio de San Andres de Macha.
+            
+          </p>
           <a href="Javascript:void(0)">Read More</a>
         </div>
       </div>
@@ -219,7 +226,7 @@
     
       <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 border_right">
          <div class="upcomimg">
-           <figure><img src="intro/images/up.jpg" alt="#"/></figure>
+           <figure><img src="intro/images/www.PNG" alt="#"/></figure>
         </div>
           </div>
   </div>
@@ -276,7 +283,7 @@
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
             <div class="Gallery_img">
-              <figure><img src="images/Gallery4.jpg" alt="#"/></figure>
+              <figure><img src="intro/images/Gallery4.jpg" alt="#"/></figure>
             </div>
             <div class="hover_box">
              
@@ -316,7 +323,7 @@
               <form class="contact_bg">
             <div class="row">
               <div class="col-md-12">
-                <div class="titlepage">
+                <!-- <div class="titlepage">
                   <h2>Contact us</h2>
                 </div>
                 <div class="col-md-12">
@@ -333,18 +340,18 @@
                 </div>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                   <button class="send">Send</button>
-                </div>
+                </div> -->
               </div>
             </div>
             </form>
 
             </div>
             <div class="col-md-12 border_top">
-              <form class="news">
+              <!-- <form class="news">
                <h3>Newsletter</h3>
                 <input class="newslatter" placeholder="ENTER YOUR MAIL" type="text" name=" ENTER YOUR MAIL">
                 <button class="submit">Subscribe</button>
-              </form>
+              </form> -->
             </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
               <div class="row">
@@ -352,13 +359,13 @@
                   <div class="address">
                     <ul class="loca">
                       <li>
-                        <a href="#"><img src="intro/icon/loc.png" alt="#" /></a>Locations
+                        <a href="#"><img src="intro/icon/loc.png" alt="#" /></a>Localizacion
                    
                         <li>
                           
-                            <a href="#"><img src="intro/icon/call.png" alt="#" /></a>+12586954775 </li>
+                            <a href="#"><img src="intro/icon/call.png" alt="#" /></a>+591 67066488 </li>
                           <li>
-                            <a href="#"><img src="intro/icon/email.png" alt="#" /></a>demo@gmail.com </li>
+                            <a href="#"><img src="intro/icon/email.png" alt="#" /></a>admin@gmail.com </li>
                           </ul>
                          
 
@@ -381,7 +388,7 @@
                <div class="container">
               <div class="copyright">
                
-                  <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free  html Templates</a></p>
+                  <p>Copyright 2025 |<a href="{{url('/welcome')}}">U.E.V.P.</a></p>
                 </div>
               </div>
             </div>

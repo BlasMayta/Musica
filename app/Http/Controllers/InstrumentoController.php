@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 
 class InstrumentoController extends Controller
 {
-    public function piano(){
+    public function index(){
         
-       return view('instrumento.piano');
+       return view('piano.index');
      }
+     public function zampona(){
+        
+      return view('piano.zampona');
+    }
 }

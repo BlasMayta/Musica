@@ -149,8 +149,8 @@
                   
                   <li> <a href="{{url('himno')}}">himno</a> </li>
                   <li> <a href="{{url('contenidoinicio')}}">Contenido </a> </li>
-                  <li> <a href="gallery.html">juegos</a> </li>
-                  <li> <a href="contact.html">Instrumento</a></li>
+                  <li> <a href="{{url('juego')}}">juegos</a> </li>
+                  <li> <a href="{{url('piano')}}">Instrumento</a></li>
                   
 
                   @if (Route::has('login'))
@@ -198,14 +198,13 @@
 <div class="container">
   <div class="row">
     <!-- TARJETA 1 -->
-    <div class= "box-item col-md-4">
+    <div class= "box-item col-md-6">
       <div class="flip-box">
         <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
           <div class="inner color-white">
               <h3 class="flip-box-header">INICIO DE LA MUSICA</h3>
-              <p>La Metodologia musical se debe </p>
-              <p>encotrar factible y practico para los niños</p>
-
+              <p>El inicio de la musica que inicio antiaguamente</p>
+          
               <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
           </div>
 
@@ -213,9 +212,83 @@
         <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
           <div class="inner color-white">
               <h3 class="flip-box-header">INICIO DE LA MUSICA</h3>
-              <p>La Metodologia musical se debe </p>
-              <p>encotrar factible y practico para los niños</p>
+              <p>El inicio de la musica que inicio antiaguamente</p>
+       
+              <br>
 
+                <!-- <button class="flip-box-button" >ingrese para ver</button> -->
+                <a class="btn btn-primary" class="flip-box-button" href="{{url('/iniciomusica')}}">ingrese para ver</a> 
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+
+    <!-- TARJETA 2 -->
+    <div class= "box-item col-md-6">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">TEORIA DE LA MUSICA</h3>
+              
+                   <p>Es el estudio de los elementos que componen la música, y sirve para comprender cómo funciona, crear, analizar e interpretar música</p>
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">TEORIA DE LA MUSICA</h3>
+                 <p>Es el estudio de los elementos que componen la música, y sirve para comprender cómo funciona, crear, analizar e interpretar música</p>
+                 <a class="btn btn-primary" class="flip-box-button" href="{{url('/principal')}}">ingrese para ver</a> 
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+  </div>
+ 
+</div>
+<!-- /----------------------------------------------------------------------------/ -->
+<div class="backgro_mh">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heding">
+           <h2>LECCIONES</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- TARJETA 1 -->
+    <div class= "box-item col-md-4">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">TEORIA DE LA MUSICA</h3>
+              <p>Es el estudio de los elementos que componen la música, y sirve para comprender cómo funciona, crear, analizar e interpretar música</p>
+          
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">TEORIA DE LA MUSICA</h3>
+              <p>Es el estudio de los elementos que componen la música, y sirve para comprender cómo funciona, crear, analizar e interpretar música</p>
+       
               <br>
 
                 <!-- <button class="flip-box-button" >ingrese para ver</button> -->
@@ -235,20 +308,21 @@
       <div class="flip-box">
         <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
           <div class="inner color-white">
-              <h3 class="flip-box-header">NOCIONES DE LA MUSICA</h3>
+              <h3 class="flip-box-header">EL PENTAGRAMA</h3>
               <p>La Metodologia musical se debe </p>
-              <p>encotrar factible y practico para los niños</p>
-
+           
               <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
           </div>
 
         </div>
         <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
           <div class="inner color-white">
-              <h3 class="flip-box-header">NOCIONES DE LA MUSICA</h3>
+              <h3 class="flip-box-header">EL PENTAGRAMA</h3>
               <p>La Metodologia musical se debe </p>
               <p>encotrar factible y practico para los niños</p>
-                <button class="flip-box-button">ingrese para ver</button>
+                <!-- <button class="flip-box-button" href="{{url('/iniciomusica')}}" >ingrese para ver</button> -->
+
+                <a class="btn btn-primary" class="flip-box-button" href="{{url('/pentagrama')}}">ingrese para ver</a>
               
           </div>
 
@@ -263,20 +337,20 @@
       <div class="flip-box">
         <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/B69Qpx2C/pian2.webp');">
           <div class="inner color-white">
-              <h3 class="flip-box-header">JUEGOS</h3>
+              <h3 class="flip-box-header">LAS NOTAS</h3>
               <p>La Metodologia musical se debe </p>
-              <p>encotrar factible y practico para los niños</p>
-
+        
               <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
           </div>
 
         </div>
         <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/B69Qpx2C/pian2.webp');">
           <div class="inner color-white">
-              <h3 class="flip-box-header">JUEGOS</h3>
+              <h3 class="flip-box-header">LAS NOTAS</h3>
               <p>La Metodologia musical se debe </p>
-              <p>encotrar factible y practico para los niños</p>
-                <button class="flip-box-button">ingrese para ver</button>
+  
+              <a class="btn btn-primary" class="flip-box-button" href="{{url('/lasnotas')}}">ingrese para ver</a>
+              
               
           </div>
 
@@ -291,10 +365,168 @@
   </div>
 </div>
 
+<!-- /-------------------------------------------------------/ -->
+<div class="container">
+  <div class="row">
+    <!-- TARJETA 1 -->
+    <div class= "box-item col-md-4">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">LAS FIGURAS</h3>
+              <p>La Metodologia musical se debe </p>
+          
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">LAS FIGURAS</h3>
+              <p>La Metodologia musical se debe </p>
+       
+              <br>
+
+                <!-- <button class="flip-box-button" >ingrese para ver</button> -->
+                <a class="btn btn-primary" class="flip-box-button" href="{{url('/figuras')}}">ingrese para ver</a> 
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+
+    <!-- TARJETA 2 -->
+    <div class= "box-item col-md-4">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">LAS CLAVES</h3>
+              <p>La Metodologia musical se debe </p>
+           
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">LAS CLAVES</h3>
+              <p>La Metodologia musical se debe </p>
+              <p>encotrar factible y practico para los niños</p>
+              <a class="btn btn-primary" class="flip-box-button" href="{{url('/claves')}}">ingrese para ver</a> 
+              
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+    <!-- TARJETA 3 -->
+    <div class= "box-item col-md-4">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/B69Qpx2C/pian2.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">EL PUNTILLO</h3>
+              <p>La Metodologia musical se debe </p>
+        
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/B69Qpx2C/pian2.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">EL PUNTILLO</h3>
+              <p>La Metodologia musical se debe </p>
+  
+              <a class="btn btn-primary" class="flip-box-button" href="{{url('/puntillos')}}">ingrese para ver</a> 
+              
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
 
 
+  </div>
+</div>
+<!-- /------------------------------------------------------------------/ -->
+
+<div class="container">
+  <div class="row">
+    <!-- TARJETA 1 -->
+    <div class= "box-item col-md-6">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">LA LIGADURA</h3>
+              <p>La Metodologia musical se debe </p>
+          
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">LA LIGADURA</h3>
+              <p>La Metodologia musical se debe </p>
+       
+              <br>
+
+                <!-- <button class="flip-box-button" >ingrese para ver</button> -->
+                <a class="btn btn-primary" class="flip-box-button" href="{{url('/laligadura')}}">ingrese para ver</a> 
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+
+    <!-- TARJETA 2 -->
+    <div class= "box-item col-md-6">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">EL TRISILLO</h3>
+              <p>La Metodologia musical se debe </p>
+           
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">EL TRISILLO</h3>
+              <p>La Metodologia musical se debe </p>
+              <p>encotrar factible y practico para los niños</p>
+              <a class="btn btn-primary" class="flip-box-button" href="{{url('/eltrisillo')}}">ingrese para ver</a> 
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+    <!-- TARJETA 3 -->
+  
 
 
+  </div>
+</div>
 
 <!-- end Gallery --> 
 

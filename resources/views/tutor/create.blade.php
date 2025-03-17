@@ -5,7 +5,9 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="staticBackdropLabel">NUEVO TUTOR</h4>    
+                <br>
+                <h4 class="modal-title" id="staticBackdropLabel">FORMULARIO DE REGISTRO - NUEVO TUTOR</h4> 
+                <br>   
             </div>
             <div class="modal-body">
                 <form action="{{ url('tutors') }}" method="post" entype="multipart/form-data">

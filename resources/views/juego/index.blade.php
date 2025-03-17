@@ -149,8 +149,8 @@
                   
                   <li> <a href="{{url('himno')}}">himno</a> </li>
                   <li> <a href="{{url('contenidoinicio')}}">Contenido </a> </li>
-                  <li> <a href="gallery.html">juegos</a> </li>
-                  <li> <a href="contact.html">Instrumento</a></li>
+                  <li> <a href="{{url('juego')}}">juegos</a> </li>
+                  <li> <a href="{{url('piano')}}"">Instrumento</a></li>
                   
 
                   @if (Route::has('login'))
@@ -277,6 +277,7 @@
               <p>encotrar factible y practico para los niños</p>
               <a class="btn btn-primary" class="flip-box-button" href="{{url('/juegocompa')}}">ingrese para ver</a> 
               
+              
           </div>
 
         </div>
@@ -327,7 +328,8 @@
               <br>
 
                 <!-- <button class="flip-box-button" >ingrese para ver</button> -->
-                <a class="btn btn-primary" class="flip-box-button" href="{{url('/iniciomusica')}}">ingrese para ver</a> 
+                <a class="btn btn-primary" class="flip-box-button" href="{{url('/juegocompara1')}}">ingrese para ver</a> 
+              
               
           </div>
 

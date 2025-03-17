@@ -9,7 +9,7 @@ class Form extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'publish_date', 'publish_time', 'duration'];
 
     public function questions()
     {

@@ -16,15 +16,18 @@ use App\Http\Controllers\TextoController;
 use App\Http\Controllers\TutorController;
 use App\Http\Controllers\FormularioController;
 use App\Http\Controllers\controllersGame\GameInicialController;
+use App\Http\Controllers\ControllerContenido\ContenidoController;
 use App\Http\Controllers\ChatgptController;
 // use App\Http\Controllers\Admin\UserController;
 
-use App\Http\Controllers\ContenidoController;
+
+use App\Http\Controllers\AudioController;
 
 use App\Http\Controllers\Admin\HomeController;
 use App\http\Controllers\PermissionController;
 use App\http\Controllers\UserController;
 use App\http\Controllers\RolesController;
+use App\Http\Controllers\ChatController;
 
 
 use App\Http\Controllers\FormController;
@@ -32,6 +35,58 @@ use App\Http\Controllers\FormController;
 
 
 use Illuminate\Support\Facades\Route;
+
+
+use App\Http\Controllers\NoteController;
+
+use App\Http\Controllers\EvainstrumentoController;
+
+
+use App\Http\Controllers\TeoriaQuizController;
+use App\Http\Controllers\Teoriap1QuizController;
+
+use App\Http\Controllers\ReconocimientoSonidoController;
+
+Route::get('/subir-audio', function () {
+    return view('recosonido.upload');
+})->name('mostrar.formulario');
+
+Route::post('/subir-audio', [ReconocimientoSonidoController::class, 'subirAudio'])->name('subir.audio');
+
+
+Route::get('/teoriap1-quiz', [Teoriap1QuizController::class, 'menu'])->name('teoriap1.quiz.menu');
+Route::get('/teoriap1-quiz/{level}', [Teoriap1QuizController::class, 'form'])->name('teoriap1.quiz.form');
+Route::post('/teoriap1-quiz/{level}', [Teoriap1QuizController::class, 'evaluate'])->name('teoriap1.quiz.evaluate');
+
+
+///------------------------------------------------------------------------
+Route::get('/teoria-quiz', [TeoriaQuizController::class, 'index'])->name('teoria.quiz.index');
+Route::post('/teoria-quiz', [TeoriaQuizController::class, 'evaluate'])->name('teoria.quiz.evaluate');
+
+/////____________________________________________________________
+Route::get('/instru', [EvainstrumentoController::class, 'menu'])->name('instru.menu');
+Route::get('/instru/{nivel}', [EvainstrumentoController::class, 'form'])->name('instru.form');
+Route::post('/instru/{nivel}', [EvainstrumentoController::class, 'evaluate'])->name('instru.evaluate');
+
+//////________________________________________________
+Route::get('/detector', [NoteController::class, 'index'])->name('notes.index');
+Route::post('/guardar-nota', [NoteController::class, 'store'])->name('notes.store');
+Route::get('/historial', [NoteController::class, 'show'])->name('notes.history');
+// use App\Models\Audio;
+
+// Route::get('/test-insert', function () {
+//     $audio = Audio::create([
+//         'features' => ['mfcc' => [1.23, 4.56, 7.89]]
+//     ]);
+//     return $audio;
+// });
+
+// use Illuminate\Support\Facades\Log;
+
+// Route::get('/test-log', function () {
+//     Log::error('Este es un mensaje de prueba para verificar los logs.');
+//     return 'Log generado, revisa storage/logs/laravel.log';
+// });
 
 /**Route::any('instrumento', function(){
     return request('search');
@@ -53,6 +108,27 @@ use Illuminate\Support\Facades\Route;
 //Route::get('instrumentos/piano', [App\Http\Controllers\InstrumentoController::class,'piano'])->name('instrumentos.piano');
 //Route::get('/instrumentos/', [InstrumentoController::class, 'piano']);
 
+// Route::resource('audios', AudioController::class)->names('audio');
+// Route::post('/audios', [AudioController::class, 'store'])->name('audio.store');
+
+
+// Grupo de rutas para el recurso "audios"
+//Route::prefix('audio')->group(function () {
+    // Si deseas listar los audios almacenados (opcional)
+   // Route::get('/', [AudioController::class, 'index'])->name('audio.index');
+
+    // Ruta para guardar un nuevo registro de audio
+   // Route::post('/', [AudioController::class, 'store'])->name('audio.store');
+
+    // Si deseas ver un audio en particular (opcional)
+    // Route::get('/{audio}', [AudioController::class, 'show'])->name('audio.show');
+// });
+////////////////////////
+ Route::prefix('audio')->group(function () {
+     Route::post('/', [AudioController::class, 'store'])->name('audio.store'); // Guardar audio
+     Route::get('/', [AudioController::class, 'index'])->name('audio.index');   // Listar audios
+ });
+
 Route::resource('instrumentos', InstrumentoController:: class)->names('piano');
 
 Route::resource('docentes', DocenteController:: class)->names('docente');
@@ -71,7 +147,7 @@ Route::resource('checks', CheckController:: class)->names('check');
 Route::resource('textos', TextoController:: class)->names('texto');
 
 */
- // FORMULARIO DE TEST EMPLEANDO LOGICA DIFUSA
+ // FORMULARIO DE TEST 
 Route::get('/formulario', [FormularioController::class, 'index']);
 Route::post('/formulario', [FormularioController::class, 'store']);
 
@@ -79,6 +155,9 @@ Route::post('/formulario', [FormularioController::class, 'store']);
 Route::resource('forms', FormController::class)->names('forms');
 Route::post('/forms/{form}/responses', [FormController::class, 'storeResponse'])->name('forms.responses.store');
 Route::get('/thankyou', [FormController::class, 'thankYou'])->name('forms.thankyou');
+
+Route::get('/forms/{id}/edit', [FormController::class, 'edit'])->name('forms.edit');
+Route::put('/forms/{id}', [FormController::class, 'update'])->name('forms.update');
 //--------------------------------------------------------------------------
 /*
 Route::get('/', [FormController::class, 'index'])->name('forms.index');
@@ -112,8 +191,50 @@ Route:: get('/iniciomusica',[ContenidoController:: class, 'iniciomusica'])->name
 
 Route::get('/iniciosonoro',[ContenidoController:: class, 'sonoro'])->name('contenidoinicio.iniciosonoro');
 
+//LECCIONES
+Route::get ('/principal',[ContenidoController:: class, 'principal'])->name('contenidoinicio.principal');
+//PRIMER TRIMESTRE
+Route::get ('/ptecvocal',[ContenidoController:: class, 'ptecvocal'])->name('contenidoinicio.ptecvocal');
+Route::get ('/pentonacion',[ContenidoController:: class, 'pentonacion'])->name('contenidoinicio.pentonacion');
+Route::get ('/pparametro',[ContenidoController:: class, 'pparametro'])->name('contenidoinicio.pparametro');
 
+
+Route::get ('/pentagrama',[ContenidoController:: class, 'pentagrama'])->name('contenidoinicio.pentagrama');
+Route:: get('/lasnotas', [ContenidoController:: class,'nota'])->name('contenidoinicio.lasnotas');
+Route::get('/figuras', [ContenidoController:: class, 'figura'])->name('contenidoinicio.figuras');
+Route::get('/claves',[ContenidoController::class, 'clave'])->name('contenidoinicio.claves');
+Route::get('/puntillos',[ContenidoController::class,'puntillo'])->name('contenidoinicio.puntillos');
+Route::get('/laligadura',[ContenidoController::class, 'ligadura'])->name('contenidoinicio.laligadura');
+Route::get('/eltrisillo',[ContenidoController::class, 'trisillo'])->name('contenidoinicio.eltrisillo');
+
+// INICIO DE LA MUSICA
+
+Route::get('/naturaleza',[ContenidoController::class, 'naturaleza'])->name('sonoro.naturaleza');
+Route::get('/animales',[ContenidoController::class, 'animales'])->name('sonoro.animales');
+Route::get('/instrumentos',[ContenidoController::class, 'instrumentos'])->name('sonoro.instrumentos');
+// -------------------------------------------------------------------------------------------
+// INSTRUMENTOS
+// --------------------------------------------------------------------------------
+Route::get('/piano',[InstrumentoController::class, 'index'])->name('piano.index');
+Route::get('/zampona',[InstrumentoController::class, 'zampona'])->name('piano.zampona');
+
+// -------------------------------------------------------------------------------------------
+// DEBATE
+// --------------------------------------------------------------------------------
+
+// Rutas protegidas por autenticación
+// Route::middleware('auth')->group(function () {
+//      Route::prefix('chat')->group(function () {
+         Route::get('/chat', [ChatController::class, 'index'])->name('debate.chat');
+        Route::post('/enviar-mensaje', [ChatController::class, 'enviarMensaje'])->name('chat.enviar');
+         Route::get('/limpiar-chat', [ChatController::class, 'limpiarChat'])->name('chat.limpiar');
+//      });
+//  });
 //----------------------------------------------------------------
+// NOTA
+// -------------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------
 
 //JUEGOS 
 Route::get('/juego',[GameInicialController:: class, 'index'])->name('juego.index');
@@ -125,6 +246,8 @@ Route::get('/juegomental', [GameInicialController:: class, 'mental'])->name('jue
 Route::get('/juegomenta1',[GameInicialController:: class, 'mental1'])->name('juego.juegomenta1');
 
 Route::get('/juegocompa',[GameInicialController:: class, 'comparar'])->name('juego.juegocompa');
+
+Route::get('/juegocompara1',[GameInicialController:: class,'compara1'])->name('juego.juegocompara1');
 
 
 
@@ -148,6 +271,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'
 
     
 });
+
 
 
 // Route::group(['middleware' => 'auth'], function () {

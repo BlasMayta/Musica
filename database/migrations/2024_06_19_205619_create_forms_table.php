@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->timestamps();
+            $table->string('title'); // Título del formulario
+            $table->text('description')->nullable(); // Descripción del formulario
+            $table->date('publish_date'); // Fecha de publicación
+            $table->time('publish_time'); // Hora de publicación
+            $table->integer('duration'); // Duración de la evaluación en minutos
+            $table->timestamps(); // Campos de fecha de creación y actualización
         });
     }
 
