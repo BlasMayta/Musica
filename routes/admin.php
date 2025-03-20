@@ -47,11 +47,14 @@ use App\Http\Controllers\Teoriap1QuizController;
 
 use App\Http\Controllers\ReconocimientoSonidoController;
 
-Route::get('/subir-audio', function () {
-    return view('recosonido.upload');
-})->name('mostrar.formulario');
 
-Route::post('/subir-audio', [ReconocimientoSonidoController::class, 'subirAudio'])->name('subir.audio');
+
+
+// Route::get('/subir-audio', function () {
+//     return view('recosonido.upload');
+// })->name('mostrar.formulario');
+
+// Route::post('/subir-audio', [ReconocimientoSonidoController::class, 'subirAudio'])->name('subir.audio');
 
 
 Route::get('/teoriap1-quiz', [Teoriap1QuizController::class, 'menu'])->name('teoriap1.quiz.menu');
