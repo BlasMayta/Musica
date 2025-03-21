@@ -210,6 +210,10 @@ Route::get('/puntillos',[ContenidoController::class,'puntillo'])->name('contenid
 Route::get('/laligadura',[ContenidoController::class, 'ligadura'])->name('contenidoinicio.laligadura');
 Route::get('/eltrisillo',[ContenidoController::class, 'trisillo'])->name('contenidoinicio.eltrisillo');
 
+// RUTA DE MENU EVALUACION
+Route::get ('/menuevalu',[ContenidoController:: class, 'menueva'])->name('contenidoinicio.menuevalu');
+
+
 // INICIO DE LA MUSICA
 
 Route::get('/naturaleza',[ContenidoController::class, 'naturaleza'])->name('sonoro.naturaleza');
