@@ -16,7 +16,7 @@
                     <h2><i class="fas fa-users fa-fw"></i></h2>
                 </td>
                 <td align="center">
-                    <h2> USUARIOS</h2>
+                    <h2> USUARIOS 5</h2>
                 </td>
             </tr>
         </table>
