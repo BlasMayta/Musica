@@ -211,7 +211,7 @@
         </div>
         <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
           <div class="inner color-white">
-              <h3 class="flip-box-header">INICIO DE LA MUSICA 2</h3>
+              <h3 class="flip-box-header">INICIO DE LA MUSICA </h3>
               <p>El inicio de la musica que inicio antiaguamente</p>
        
               <br>
@@ -233,7 +233,7 @@
       <div class="flip-box">
         <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
           <div class="inner color-white">
-              <h3 class="flip-box-header">TEORIA-DE-LA-MUSICA 2</h3>
+              <h3 class="flip-box-header">TEORIA DE LA MUSICA </h3>
               
                    <p>Es el estudio de los elementos que componen la música, y sirve para comprender cómo funciona, crear, analizar e interpretar música</p>
               <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
@@ -242,7 +242,7 @@
         </div>
         <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
           <div class="inner color-white">
-              <h3 class="flip-box-header">TEORIA-DE-LA-MUSICA</h3>
+              <h3 class="flip-box-header">TEORIA DE LA MUSICA</h3>
                  <p>Es el estudio de los elementos que componen la música, y sirve para comprender cómo funciona, crear, analizar e interpretar música</p>
                  <a class="btn btn-primary" class="flip-box-button" href="{{url('/principal')}}">ingrese para ver</a> 
               
