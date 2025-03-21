@@ -1,111 +1,146 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Dashboard Compacto')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1 class="mb-4">Mi Dashboard Principal</h1>
+@stop
+
+@section('css')
+    <style>
+        .image-gallery img {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .image-gallery img:hover {
+            transform: scale(1.03);
+        }
+        
+        #miniChart {
+            max-width: 100%;
+            margin: auto;
+        }
+        
+        .info-box {
+            margin-bottom: 10px;
+            min-height: 85px;
+        }
+        
+        .info-box-icon {
+            font-size: 1.8rem;
+        }
+    </style>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
-
-    <!-- Sección de imágenes grandes -->
-    <div class="school-images">
-        <div class="image-container">
-            <img src="/images/colegio1.jpg" alt="Colegio 1" class="school-img">
-            <div class="menu-overlay">
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Noticias</a></li>
-                    <li><a href="#">Calendario</a></li>
-                </ul>
+    <div class="container-fluid">
+        <!-- Fila de Estadísticas -->
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="info-box bg-gradient-info">
+                    <span class="info-box-icon"><i class="fas fa-users"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Usuarios Activos</span>
+                        <span class="info-box-number">1,234</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="info-box bg-gradient-success">
+                    <span class="info-box-icon"><i class="fas fa-dollar-sign"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Ventas Hoy</span>
+                        <span class="info-box-number">$4,567</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="image-container">
-            <img src="/images/colegio2.jpg" alt="Colegio 2" class="school-img">
-            <div class="menu-overlay">
-                <ul>
-                    <li><a href="#">Actividades</a></li>
-                    <li><a href="#">Talleres</a></li>
-                    <li><a href="#">Excursiones</a></li>
-                </ul>
+
+        <!-- Fila de Gráfico e Imágenes -->
+        <div class="row">
+            <!-- Gráfico Pequeño -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title">Actividad Diaria</h3>
+                    </div>
+                    <div class="card-body p-2">
+                        <canvas id="miniChart" style="height: 150px;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Imágenes -->
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h3 class="card-title">Visualizaciones</h3>
+                        <button class="btn btn-sm btn-primary float-right" onclick="addImage()">
+                            <i class="fas fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                    <div class="card-body image-gallery">
+                        <div class="row" id="imageContainer">
+                            <!-- Imágenes existentes -->
+                            <div class="col-6 col-md-4 mb-3">
+                                <img src="https://via.placeholder.com/300x200" 
+                                     class="img-fluid rounded" 
+                                     alt="Ejemplo 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 @stop
 
-@section('css')
-    <style>
-        /* Estilos para las imágenes grandes */
-        .school-images {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-
-        .image-container {
-            position: relative;
-            width: 45%;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .school-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .image-container:hover .school-img {
-            transform: scale(1.1);
-        }
-
-        /* Estilos para los menús que aparecen al pasar el mouse */
-        .menu-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .image-container:hover .menu-overlay {
-            opacity: 1;
-        }
-
-        .menu-overlay ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-
-        .menu-overlay ul li {
-            margin: 15px 0;
-        }
-
-        .menu-overlay ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 20px;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            transition: color 0.3s ease;
-        }
-
-        .menu-overlay ul li a:hover {
-            color: #ffcc00;
-        }
-    </style>
-@stop
 
 @section('js')
-    <!-- <script>console.log('hola')</script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Gráfico Mini
+        const miniChart = new Chart(document.getElementById('miniChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                datasets: [{
+                    label: 'Visitas',
+                    data: [65, 59, 80, 81, 56, 55],
+                    backgroundColor: '#4e73df',
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { display: false },
+                    x: { 
+                        grid: { display: false },
+                        ticks: { font: { size: 10 } }
+                    }
+                }
+            }
+        });
+
+        // Función para agregar imágenes
+        function addImage(src = 'https://via.placeholder.com/300x200') {
+            const container = document.getElementById('imageContainer');
+            const newCol = document.createElement('div');
+            newCol.className = 'col-6 col-md-4 mb-3';
+            
+            const newImg = document.createElement('img');
+            newImg.className = 'img-fluid rounded';
+            newImg.src = src;
+            
+            newCol.appendChild(newImg);
+            container.appendChild(newCol);
+        }
+    </script>
 @stop
