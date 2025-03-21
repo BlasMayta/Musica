@@ -192,7 +192,7 @@
 </head>
 <body>
     <div class="container">
-        <h1><span class="emoji">🎉</span>Resultado del Quiz Musical<span class="emoji">🎻</span></h1>
+        <h1><span class="emoji">🎉</span>Resultado del Prueba Musical<span class="emoji">🎻</span></h1>
         
         <div class="score-card">
             <div class="glow" style="font-size: 2em; color: #6c5ce7;">

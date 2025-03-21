@@ -141,7 +141,7 @@
 <body>
     <div class="container">
         <div class="music-note">🎶</div>
-        <h1>Quiz Musical - Nivel {{ ucfirst($level) }} 🎵</h1>
+        <h1>Prueba Musical - Nivel {{ ucfirst($level) }} 🎵</h1>
 
         @if(session('error'))
           <div class="message error">

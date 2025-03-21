@@ -62,11 +62,19 @@ class ContenidoController extends Controller
     {
         return view('contenidoinicio.eltrisillo');
     }
+    // MENU DE EVALUACION
+
+    public function menueva()
+    {
+        return view('contenidoinicio.menuevalu');
+    }
+
     //CONTENIDO PRIMER TRIMESTRE
     public function ptecvocal()
     {
         return view('contenidoinicio.ptecvocal');
     }
+    
     public function pentonacion()
     {
         return view('contenidoinicio.pentonacion');

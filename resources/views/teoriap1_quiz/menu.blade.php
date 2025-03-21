@@ -104,7 +104,7 @@
 <body>
     <div class="container">
         <div class="music-note">🎵</div>
-        <h1>Quiz de Teoría Musical</h1>
+        <h1>Prueba de Teoría Musical</h1>
         
         @if(session('success'))
           <div class="message success">{{ session('success') }}</div>

@@ -198,7 +198,7 @@
 <div class="container">
   <div class="row">
     <!-- TARJETA 1 -->
-    <div class= "box-item col-md-6">
+    <div class= "box-item col-md-4">
       <div class="flip-box">
         <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/MGjrxBNN/piano-reloj.jpg');">
           <div class="inner color-white">
@@ -229,7 +229,7 @@
     </div>
 
     <!-- TARJETA 2 -->
-    <div class= "box-item col-md-6">
+    <div class= "box-item col-md-4">
       <div class="flip-box">
         <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/HsmbSMT3/piannn.webp');">
           <div class="inner color-white">
@@ -254,6 +254,34 @@
 
       </div>
     </div>
+    
+    <!-- TARJETA 3 -->
+    <div class= "box-item col-md-4">
+      <div class="flip-box">
+        <div class="flip-box-front text-center" style="background-image: url('https://i.postimg.cc/vmTM1Kpy/evalu.png');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">EVALUACION</h3>
+              
+                   <p> la evaluación es una herramienta que ayuda a identificar sus aprendizajes, ajustar los contenidos y apoyar su desarrollo</p>
+              <img src="https://s25.postimg.cc/65hsttv9b/cta-arrow.png" alt="" class="flip-box-img">
+          </div>
+
+        </div>
+        <div class="flip-box-back text-center" style="background-image: url('https://i.postimg.cc/vmTM1Kpy/evalu.png');">
+          <div class="inner color-white">
+              <h3 class="flip-box-header">EVALUACION</h3>
+                 <p> la evaluación es una herramienta que ayuda a identificar sus aprendizajes, ajustar los contenidos y apoyar su desarrollo</p>
+                 <a class="btn btn-primary" class="flip-box-button" href="{{url('/menuevalu')}}">ingrese para ver</a> 
+              
+          </div>
+
+        </div>
+
+       
+
+      </div>
+    </div>
+    
   </div>
  
 </div>
